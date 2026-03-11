@@ -655,37 +655,9 @@ export default function Settings() {
                         ))}
                       </div>
                     </div>
-
-                    <div>
-                      <h3 className="text-[16px] font-semibold text-main font-[Inter] mb-3">
-                        Language
-                      </h3>
-                      <select
-                        value={settingsData.appearance.language}
-                        onChange={(e) =>
-                          setSettingsData((prev) => ({
-                            ...prev,
-                            appearance: {
-                              ...prev.appearance,
-                              language: e.target.value,
-                            },
-                          }))
-                        }
-                        className="w-full h-[50px] px-4 rounded-xl border border-border text-[16px] font-[Inter] focus:ring-2 focus:ring-primary focus:border-primary bg-input text-main"
-                      >
-                        <option value="en">English</option>
-                        <option value="es">Español</option>
-                        <option value="fr">Français</option>
-                        <option value="de">Deutsch</option>
-                        <option value="it">Italiano</option>
-                        <option value="pt">Português</option>
-                        <option value="ru">Русский</option>
-                        <option value="zh">中文</option>
-                        <option value="ja">日本語</option>
-                        <option value="ko">한국어</option>
-                      </select>
-                    </div>
                   </div>
+
+
 
                   <div className="flex justify-end gap-4 pt-6 border-t border-border mt-6">
                     <button
