@@ -88,6 +88,55 @@ const loginUser = async (req, res) => {
   }
 };
 
+// @desc Change Password
+const changePassword = async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+
+    if (!req.user) {
+      return res.status(401).json({ message: "Not authorized" });
+    }
+
+    // validate required fields before proceeding
+    if (!currentPassword || !newPassword) {
+      return res
+        .status(400)
+        .json({ message: "Current password and new password are required" });
+    }
+
+    const user = await User.findByPk(req.user.id);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // ensure user has a local password set (e.g., not an OAuth-only account)
+    if (!user.password) {
+      return res
+        .status(400)
+        .json({ message: "Password is not set for this account" });
+    }
+
+    // verify current password
+    const isMatch = await user.matchPassword(currentPassword);
+
+    if (!isMatch) {
+      return res.status(400).json({ message: "Current password incorrect" });
+    }
+
+    // update password
+    user.password = newPassword;
+
+    await user.save(); // bcrypt hashing happens in beforeSave hook
+
+    res.json({ message: "Password updated successfully" });
+
+  } catch (error) {
+    console.error("CHANGE PASSWORD ERROR:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
 // @desc Get profile
 const getUserProfile = async (req, res) => {
   try {
@@ -423,4 +472,5 @@ export {
   updateUserSettings, // stub
   updateUserProfile, // stub
   removePurchasedCourse,
+  changePassword
 };
