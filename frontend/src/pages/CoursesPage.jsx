@@ -251,7 +251,13 @@ const CoursesPage = () => {
 
                   {/* FILTER BUTTON */}
                   <div className="relative flex justify-end text-slate-500">
-                    <button onClick={() => setShowExploreFilter(!showExploreFilter)}>
+                    <button
+                      type="button"
+                      onClick={() => setShowExploreFilter(!showExploreFilter)}
+                      aria-label="Toggle explore filters"
+                      aria-expanded={showExploreFilter}
+                      aria-controls="explore-filter-menu"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="w-8 h-8 text-slate-500 cursor-pointer hover:text-teal-500"
@@ -269,7 +275,10 @@ const CoursesPage = () => {
                     </button>
 
                     {showExploreFilter && (
-                      <div className="absolute right-0 mt-10 bg-white border rounded-lg shadow-xl p-2 z-50 min-w-[150px]">
+                      <div
+                        id="explore-filter-menu"
+                        className="absolute right-0 mt-10 bg-white border rounded-lg shadow-xl p-2 z-50 min-w-[150px]"
+                      >
                         {exploreCategories.map((cat) => (
                           <button
                             key={cat}
@@ -292,9 +301,29 @@ const CoursesPage = () => {
 
                   {/* COURSE GRID */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    {filteredExploreCourses
-                      .filter((course) => !myCourses.some((c) => c.id === course.id))
-                      .map((course) => (
+                    {(() => {
+                      const visibleExploreCourses = filteredExploreCourses.filter(
+                        (course) => !myCourses.some((c) => c.id === course.id)
+                      );
+
+                      if (visibleExploreCourses.length === 0) {
+                        return (
+                          <div className="col-span-full flex flex-col items-center justify-center py-12 text-center text-slate-500">
+                            <p className="mb-4 text-sm">
+                              No courses found for this category.
+                            </p>
+                            <button
+                              type="button"
+                              onClick={() => setSelectedExploreCategory(exploreCategories[0])}
+                              className="px-4 py-2 text-sm font-semibold rounded-lg bg-[#2DD4BF] text-white"
+                            >
+                              Reset filters
+                            </button>
+                          </div>
+                        );
+                      }
+
+                      return visibleExploreCourses.map((course) => (
                         <div
                           key={course.id}
                           className="bg-card rounded-3xl border border-border overflow-hidden shadow-sm"
@@ -335,7 +364,8 @@ const CoursesPage = () => {
                             </div>
                           </div>
                         </div>
-                      ))}
+                      ));
+                    })()}
                   </div>
               </div>
             )}
