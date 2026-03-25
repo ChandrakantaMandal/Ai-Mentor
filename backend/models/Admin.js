@@ -1,4 +1,3 @@
-// backend/models/Admin.js
 import { DataTypes, Model } from "sequelize";
 import bcrypt from "bcryptjs";
 import { sequelize } from "../config/db.js";

@@ -1,4 +1,3 @@
-// backend/scripts/seedSuperAdmin.js
 import dotenv from "dotenv";
 import { connectDB } from "../config/db.js";
 import Admin from "../models/Admin.js";
@@ -9,16 +8,16 @@ const seedSuperAdmin = async () => {
   try {
     await connectDB();
 
-    const email = "superadmin@example.com";
+    const email = process.env.SUPER_ADMIN_EMAIL;
     const adminExists = await Admin.findOne({ where: { email } });
 
     if (adminExists) {
       console.log("SuperAdmin already exists.");
     } else {
       await Admin.create({
-        name: "Super Admin",
+        name: process.env.SUPER_ADMIN_NAME,
         email: email,
-        password: "superpassword123",
+        password: process.env.SUPER_ADMIN_PASSWORD,
         role: "superAdmin",
       });
       console.log("SuperAdmin created successfully!");

@@ -1,4 +1,3 @@
-// backend/controllers/adminController.js
 import Admin from "../models/Admin.js";
 import jwt from "jsonwebtoken";
 
