@@ -58,3 +58,4 @@ logs/
 coverage/
 .cache/
 
+*/.agents
