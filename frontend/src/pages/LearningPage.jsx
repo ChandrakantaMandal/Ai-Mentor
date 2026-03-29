@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-
+import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useSidebar } from "../context/SidebarContext";
@@ -688,10 +689,6 @@ export default function Learning() {
 
   const togglePlay = () => {
     if (videoRef.current) {
-      if (!selectedCelebrity && !isPlaying) {
-        setIsCelebrityModalOpen(true);
-        return;
-      }
       if (isPlaying) {
         videoRef.current.pause();
         setIsPlaying(false);
@@ -877,9 +874,18 @@ export default function Learning() {
   };
 
   return (
-    <>
+    <div className="min-h-screen bg-canvas-alt flex flex-col">
+      <Header />
+
+      <Sidebar activePage="courses" />
+
+      {/* Main Content */}
+      <div
+        className={`flex-1 flex flex-col overflow-hidden transition-all duration-300 ${sidebarCollapsed ? "lg:ml-20" : "lg:ml-80"
+          }`}
+      >
         {/* Breadcrumb */}
-        <div className="bg-card border-b border-border px-6 py-3 grid grid-flow-col-dense">
+        <div className="bg-card border-b border-border px-6 py-3 mt-20 grid grid-flow-col-dense">
           <div className="flex items-center gap-2 text-sm text-muted mt-2">
             <button
               onClick={() => navigate("/")}
@@ -1243,7 +1249,7 @@ export default function Learning() {
             formatTime={formatTime}
           />
         </div>
-
-    </>
+      </div>
+    </div>
   );
 }
