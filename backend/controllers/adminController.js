@@ -466,9 +466,20 @@ const getAllPayments = async (req, res) => {
         : [];
 
       purchased.forEach((item, index) => {
-        const courseId = Number(item.courseId);
+        if (!item || typeof item !== "object") {
+          return;
+        }
+
+        const parsedCourseId = Number(item.courseId);
+        if (!Number.isFinite(parsedCourseId)) {
+          return;
+        }
+
+        const courseId = parsedCourseId;
         const courseInfo = courseMap[String(courseId)] || {};
-        const amount = Number(item.amount ?? courseInfo.priceValue ?? 0);
+        const rawAmount = item.amount ?? courseInfo.priceValue ?? 0;
+        const parsedAmount = Number(rawAmount);
+        const amount = Number.isFinite(parsedAmount) ? parsedAmount : 0;
         const purchaseDate = item.purchaseDate || null;
 
         payments.push({
