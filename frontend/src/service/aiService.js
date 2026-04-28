@@ -13,9 +13,6 @@ export const getAIVideo = async (payload) => {
     }
   );
 
-  console.log("STATUS:", response.status);
-console.log("URL:", response.url);
-
   let data;
 
   try {
