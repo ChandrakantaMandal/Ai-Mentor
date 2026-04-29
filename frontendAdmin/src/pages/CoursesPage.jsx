@@ -42,12 +42,12 @@ function CoursesPage() {
         <table className="w-full min-w-[225px]">
           <thead className="text-left text-xs uppercase tracking-wider text-muted">
             <tr className="border-b border-border">
-              <th className="p-5">Course Detail</th>
+              <th className="p-5">Course Title</th>
               <th>Category</th>
-              <th>Pricing</th>
-              <th>Enrolled</th>
+              <th>Price</th>
+              <th>Currency</th>
+              <th>Added On</th>
               <th>Status</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody className="text-sm">
@@ -56,18 +56,24 @@ function CoursesPage() {
                 <tr key={course.id} className="border-b border-border hover:bg-canvas-alt transition-colors">
                   <td className="p-5">
                     <div className="font-semibold">{course.title}</div>
-                    <div className="text-muted">Updated: {new Date(course.updatedAt).toLocaleDateString()}</div>
+                    <div className="text-muted text-xs">ID: {course.id}</div>
                   </td>
-                  <td><span className="px-3 py-1 rounded-full bg-canvas-alt border border-border">{course.category}</span></td>
-                  <td className="font-semibold">{course.price || `Rs ${course.priceValue || 0}`}</td>
-                  <td>{course.studentsCount || 0}</td>
+                  <td>
+                    <span className="px-3 py-1 rounded-full bg-canvas-alt border border-border">
+                      {course.category || "—"}
+                    </span>
+                  </td>
+                  <td className="font-semibold">
+                    {course.priceValue != null ? course.priceValue : "—"}
+                  </td>
+                  <td>{course.currency || "—"}</td>
+                  <td className="text-muted">{new Date(course.createdAt).toLocaleDateString()}</td>
                   <td className="text-green-600">Published</td>
-                  <td className="text-lg cursor-pointer hover:text-primary">...</td>
                 </tr>
               ))
             ) : (
               <tr>
-                <td colSpan="6" className="p-10 text-center text-muted italic">No courses found. Seed data to get started.</td>
+                <td colSpan="6" className="p-10 text-center text-muted italic">No courses found.</td>
               </tr>
             )}
           </tbody>
@@ -78,4 +84,3 @@ function CoursesPage() {
 }
 
 export default CoursesPage;
-

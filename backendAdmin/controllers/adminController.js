@@ -94,7 +94,8 @@ const User = sequelize.define(
   }
 );
 
-// Define Course model
+// Define Course model — ONLY columns that actually exist in the DB
+// Actual columns: id, title, category, priceValue, currency, createdAt, updatedAt
 const Course = sequelize.define(
   "Course",
   {
@@ -105,22 +106,13 @@ const Course = sequelize.define(
     },
     title: DataTypes.STRING,
     category: DataTypes.STRING,
-    categoryColor: DataTypes.STRING,
-    lessons: DataTypes.STRING,
-    lessonsCount: DataTypes.INTEGER,
-    level: DataTypes.STRING,
-    price: DataTypes.STRING,
-    priceValue: DataTypes.INTEGER,
+    priceValue: DataTypes.FLOAT,
     currency: DataTypes.STRING,
-    rating: DataTypes.FLOAT,
-    students: DataTypes.STRING,
-    studentsCount: DataTypes.INTEGER,
-    image: DataTypes.STRING,
-    isBookmarked: DataTypes.BOOLEAN,
   },
   {
     timestamps: true,
     tableName: "Courses",
+    sync: { alter: false },
   }
 );
 
@@ -540,7 +532,10 @@ const getAllPayments = async (req, res) => {
 // @access  Private
 const getAllCourses = async (req, res) => {
   try {
-    const courses = await Course.findAll();
+    // Only select columns that actually exist in the Courses table
+    const courses = await Course.findAll({
+      attributes: ["id", "title", "category", "priceValue", "currency", "createdAt", "updatedAt"],
+    });
     res.status(200).json({
       success: true,
       data: courses,
