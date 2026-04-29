@@ -303,12 +303,12 @@ const CoursesPage = () => {
                     <>
                       {/* Dark overlay for mobile */}
                       <div
-                        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] md:hidden"
+                        className="fixed inset-0 bg-black/40 backdrop-blur-sm z-[90] "
                         onClick={() => setShowFilters(false)}
                       />
 
                       {/* Form panel */}
-                      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[26rem] md:absolute md:top-full md:left-auto md:right-0 md:translate-x-0 md:translate-y-0 md:mt-4 max-h-[85vh] overflow-y-auto bg-black/60 md:bg-black/40 backdrop-blur-3xl border border-teal-500/20 rounded-3xl shadow-[0_30px_60px_-15px_rgba(13,148,136,0.3)] p-6 z-[100] animate-in fade-in zoom-in-95 md:slide-in-from-top-6 duration-300">
+                      <div className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] max-w-[26rem]  md:top-[200px] md:right-90 md:left-auto md:translate-x-0 md:translate-y-0  max-h-[85vh] overflow-y-auto bg-black/60 md:bg-black/40 backdrop-blur-3xl border border-teal-500/20 rounded-3xl shadow-[0_30px_60px_-15px_rgba(13,148,136,0.3)] p-6 z-[100] animate-in fade-in zoom-in-95 md:slide-in-from-top-6 duration-300">
                         <div className="flex items-center justify-between mb-6">
                           <div className="flex items-center gap-3">
                             {getActiveFilterCount() > 0 && (
