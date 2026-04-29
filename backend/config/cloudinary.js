@@ -7,9 +7,7 @@ if (
   !process.env.CLOUDINARY_CLOUD_NAME ||
   !process.env.CLOUDINARY_API_KEY ||
   !process.env.CLOUDINARY_API_SECRET
-) {
-  console.error("❌ Cloudinary env variables missing");
-}
+)
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -18,4 +16,3 @@ cloudinary.config({
 });
 
 export default cloudinary;
-
