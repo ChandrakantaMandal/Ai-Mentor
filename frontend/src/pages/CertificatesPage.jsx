@@ -123,15 +123,15 @@ const CertificatesPage = () => {
       <div className="max-w-7xl mx-auto space-y-8">
         {/* Page Header */}
         <div className="mb-0">
-            <div className="flex items-center gap-2.5 sm:gap-3 mb-2">
-              <div className="p-2 sm:p-3 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-xl sm:rounded-2xl shadow-lg">
-                <Award className="w-5 h-5 sm:w-7 sm:h-7 text-white" />
+            <div className="flex items-center gap-3 mb-2">
+              <div className="p-3 bg-gradient-to-br from-amber-400 to-yellow-600 rounded-2xl shadow-lg">
+                <Award className="w-7 h-7 text-white" />
               </div>
               <div>
-                <h1 className="text-xl sm:text-3xl font-bold text-[#2D3436] dark:text-white leading-tight">
+                <h1 className="text-3xl font-bold text-[#2D3436] dark:text-white">
                   {t("certificates.title")}
                 </h1>
-                <p className="text-[#2D3436]/60 dark:text-gray-400 text-[10px] sm:text-sm mt-0.5">
+                <p className="text-[#2D3436]/60 dark:text-gray-400 text-sm mt-0.5">
                   {t("certificates.subtitle")}
                 </p>
               </div>
@@ -139,52 +139,52 @@ const CertificatesPage = () => {
           </div>
             <>
               {/* Stats Cards */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5 mb-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
                 {[
                   {
                     label: t("certificates.enrolled_courses"),
                     value: stats.totalEnrolled,
-                    icon: <BookOpen className="w-4 h-4 sm:w-5 sm:h-5 text-[#00bea3]" />,
+                    icon: <BookOpen className="w-5 h-5 text-[#00bea3]" />,
                     bg: "bg-[#00bea3]/10 dark:bg-[#00bea3]/20",
                     color: "text-[#00bea3]",
                   },
                   {
                     label: t("certificates.courses_completed"),
                     value: stats.completed,
-                    icon: <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[#28A745]" />,
+                    icon: <CheckCircle className="w-5 h-5 text-[#28A745]" />,
                     bg: "bg-[#28A745]/10 dark:bg-[#28A745]/20",
                     color: "text-[#28A745]",
                   },
                   {
                     label: t("certificates.certificates_earned"),
                     value: stats.certificatesEarned,
-                    icon: <Award className="w-4 h-4 sm:w-5 sm:h-5 text-amber-500" />,
+                    icon: <Award className="w-5 h-5 text-amber-500" />,
                     bg: "bg-amber-500/10 dark:bg-amber-500/20",
                     color: "text-amber-500",
                   },
                   {
                     label: t("certificates.in_progress"),
                     value: stats.inProgress,
-                    icon: <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-blue-500" />,
+                    icon: <Clock className="w-5 h-5 text-blue-500" />,
                     bg: "bg-blue-500/10 dark:bg-blue-500/20",
                     color: "text-blue-500",
                   },
                 ].map((s, idx) => (
                   <div
                     key={idx}
-                    className="bg-white dark:bg-[#2D3436] rounded-xl sm:rounded-2xl p-3.5 sm:p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 flex flex-col justify-between"
+                    className="bg-white dark:bg-[#2D3436] rounded-2xl p-5 shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700"
                   >
-                    <div className="flex items-start justify-between mb-2 sm:mb-3 gap-2">
-                      <span className="text-xs sm:text-sm text-[#2D3436]/60 dark:text-gray-400 font-medium leading-tight">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm text-[#2D3436]/60 dark:text-gray-400 font-medium">
                         {s.label}
                       </span>
                       <div
-                        className={`${s.bg} p-1.5 sm:p-2.5 rounded-lg sm:rounded-xl shrink-0`}
+                        className={`${s.bg} p-2.5 rounded-xl`}
                       >
                         {s.icon}
                       </div>
                     </div>
-                    <span className={`text-2xl sm:text-3xl font-bold ${s.color}`}>
+                    <span className={`text-3xl font-bold ${s.color}`}>
                       {s.value}
                     </span>
                   </div>
@@ -310,11 +310,11 @@ const CertificatesPage = () => {
                   </div>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                   {courses.map((course) => (
                     <div
                       key={course.courseId}
-                      className={`relative bg-white dark:bg-[#2D3436] rounded-xl sm:rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border-2 ${
+                      className={`relative bg-white dark:bg-[#2D3436] rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border-2 ${
                         course.isCompleted
                           ? "border-amber-400/60 hover:border-amber-400"
                           : "border-gray-100 dark:border-gray-700 hover:border-gray-200"
@@ -322,16 +322,16 @@ const CertificatesPage = () => {
                     >
                       {/* Completed badge */}
                       {course.isCompleted && (
-                        <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10">
-                          <div className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 bg-gradient-to-r from-amber-500 to-yellow-500 text-white text-[10px] sm:text-xs font-bold rounded-full shadow-lg">
-                            <CheckCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                        <div className="absolute top-4 right-4 z-10">
+                          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-amber-500 to-yellow-500 text-white text-xs font-bold rounded-full shadow-lg">
+                            <CheckCircle className="w-3.5 h-3.5" />
                             {t("certificates.completed_badge")}
                           </div>
                         </div>
                       )}
 
                       {/* Course Image */}
-                      <div className="relative h-36 sm:h-44 overflow-hidden">
+                      <div className="relative h-44 overflow-hidden">
                         {course.courseImage || course.image ? (
                           <img
                             src={course.courseImage || course.image}
@@ -340,30 +340,30 @@ const CertificatesPage = () => {
                           />
                         ) : (
                           <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 flex items-center justify-center">
-                            <BookOpen className="w-10 h-10 sm:w-12 sm:h-12 text-gray-400" />
+                            <BookOpen className="w-12 h-12 text-gray-400" />
                           </div>
                         )}
                         {/* Gradient overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                         {course.category && (
-                          <span className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3 px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-xs font-semibold text-white bg-white/20 backdrop-blur-sm rounded-full">
+                          <span className="absolute bottom-3 left-3 px-2.5 py-1 text-xs font-semibold text-white bg-white/20 backdrop-blur-sm rounded-full">
                             {course.category}
                           </span>
                         )}
                       </div>
 
                       {/* Content */}
-                      <div className="p-3.5 sm:p-5">
-                        <h3 className="text-base sm:text-lg font-bold text-[#2D3436] dark:text-gray-200 mb-1 sm:mb-1.5 line-clamp-2 leading-tight">
+                      <div className="p-5">
+                        <h3 className="text-lg font-bold text-[#2D3436] dark:text-gray-200 mb-1.5 line-clamp-2">
                           {course.courseTitle}
                         </h3>
-                        <p className="text-[10px] sm:text-xs text-[#2D3436]/60 dark:text-gray-400 mb-2.5 sm:mb-3">
+                        <p className="text-xs text-[#2D3436]/60 dark:text-gray-400 mb-3">
                           {course.lessons || `${course.totalLessons || 0} lessons`}
                         </p>
 
                         {/* Progress */}
-                        <div className="mb-3 sm:mb-4">
-                          <div className="flex justify-between text-xs sm:text-sm mb-1 sm:mb-1.5">
+                        <div className="mb-4">
+                          <div className="flex justify-between text-sm mb-1.5">
                             <span className="text-[#2D3436]/60 dark:text-gray-400 font-medium">
                               {t("certificates.progress")}
                             </span>
@@ -384,7 +384,7 @@ const CertificatesPage = () => {
                               %
                             </span>
                           </div>
-                          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 sm:h-2.5 overflow-hidden">
+                          <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5 overflow-hidden">
                             <div
                               className={`h-full rounded-full transition-all duration-700 ${
                                 course.isCompleted
@@ -404,8 +404,8 @@ const CertificatesPage = () => {
                               }}
                             />
                           </div>
-                          <div className="flex items-center gap-1 mt-1 sm:mt-1.5 text-[10px] sm:text-xs text-[#2D3436]/50 dark:text-gray-500">
-                            <FileText className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                          <div className="flex items-center gap-1 mt-1.5 text-xs text-[#2D3436]/50 dark:text-gray-500">
+                            <FileText className="w-3 h-3" />
                             {course.completedLessons}/{course.totalLessons}{" "}
                             {t("certificates.lessons")}
                           </div>
@@ -423,32 +423,32 @@ const CertificatesPage = () => {
                                 )
                               }
                               disabled={downloadingId === course.courseId}
-                              className="w-full flex items-center justify-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 sm:py-3 text-xs sm:text-sm bg-gradient-to-r from-amber-500 to-yellow-500 text-white font-semibold rounded-lg sm:rounded-xl hover:from-amber-600 hover:to-yellow-600 disabled:opacity-60 disabled:cursor-wait transition-all shadow-md hover:shadow-lg"
+                              className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-amber-500 to-yellow-500 text-white font-semibold rounded-xl hover:from-amber-600 hover:to-yellow-600 disabled:opacity-60 disabled:cursor-wait transition-all shadow-md hover:shadow-lg"
                             >
                               {downloadingId === course.courseId ? (
                                 <>
-                                  <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                                   {t("certificates.generating")}
                                 </>
                               ) : (
                                 <>
-                                  <Download className="w-4 h-4 sm:w-5 sm:h-5" />
+                                  <Download className="w-5 h-5" />
                                   {t("certificates.download")}
                                 </>
                               )}
                             </button>
                           </div>
                         ) : (
-                          <div className="text-center py-1.5 sm:py-2">
-                            <p className="text-xs sm:text-sm text-[#2D3436]/50 dark:text-gray-500 mb-1.5 sm:mb-2 leading-tight">
+                          <div className="text-center py-2">
+                            <p className="text-sm text-[#2D3436]/50 dark:text-gray-500 mb-2">
                               {t("certificates.complete_to_earn")}
                             </p>
                             <Link
                               to={`/learning/${course.courseId}`}
-                              className="inline-flex items-center gap-1 sm:gap-1.5 text-xs sm:text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 transition-colors"
+                              className="inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 dark:text-blue-400 hover:text-blue-700 transition-colors"
                             >
                               {t("certificates.continue_learning")}
-                              <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                              <ChevronRight className="w-4 h-4" />
                             </Link>
                           </div>
                         )}
