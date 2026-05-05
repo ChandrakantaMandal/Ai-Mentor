@@ -610,10 +610,15 @@ const CoursesPage = () => {
                         </span>
 
                         <button
-                          onClick={() => navigate(`/course-preview/${course.id}`)}
+                          onClick={() => {
+                            const isEnrolled = myCourses.some((c) => c.id === course.id);
+                            navigate(isEnrolled ? `/learning/${course.id}` : `/course-preview/${course.id}`);
+                          }}
                           className="px-4 py-2 rounded-lg bg-[#2DD4BF] text-white text-xs font-semibold hover:bg-teal-500 transition-colors"
                         >
-                          {t("common.enroll")}
+                          {myCourses.some((c) => c.id === course.id)
+                            ? (t("common.continue_learning") !== "common.continue_learning" ? t("common.continue_learning") : "Continue Learning")
+                            : t("common.enroll")}
                         </button>
                       </div>
 
