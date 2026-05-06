@@ -184,7 +184,7 @@ const NotFound = () => {
             <div className="absolute inset-0 opacity-40 dark:opacity-10 pointer-events-none z-0 bg-[linear-gradient(rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:40px_40px]" />
 
             <div className="flex-1 flex flex-col items-center justify-center p-4 relative z-10 pt-[4.5rem] pointer-events-none">
-                <div className="text-center max-w-2xl mx-auto flex flex-col items-center mt-[-5rem]">
+                <div className="text-center max-w-2xl mx-auto flex flex-col items-center mt-[-2rem]">
 
                     {/* Dark AI Core Animation */}
                     <div className="relative mb-8 md:mb-12 flex items-center justify-center pointer-events-auto group scale-75 md:scale-100">
@@ -195,9 +195,9 @@ const NotFound = () => {
                         <div className="absolute w-36 h-36 md:w-40 md:h-40 border-2 border-slate-800 dark:border-slate-700 border-dashed rounded-full animate-[spin_8s_linear_infinite]"></div>
                         <div className="absolute w-52 h-52 md:w-56 md:h-56 border border-slate-800/50 dark:border-slate-700/50 rounded-full animate-[ping_4s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
 
-                        {/* Dark Circle Node */}
-                        <div className="relative z-10 bg-slate-900 dark:bg-[#060913] w-24 h-24 md:w-28 md:h-28 rounded-full shadow-2xl border border-slate-800 dark:border-slate-800 flex items-center justify-center group-hover:border-teal-500/50 transition-colors duration-500 cursor-crosshair">
-                            <Bot className="w-12 h-12 md:w-14 md:h-14 text-teal-500 drop-shadow-[0_0_15px_rgba(20,184,166,0.4)] animate-bounce" style={{ animationDuration: '3s' }} />
+                        {/* Bot floating freely without background */}
+                        <div className="relative z-10 flex items-center justify-center cursor-crosshair">
+                            <Bot className="w-20 h-20 md:w-24 md:h-24 text-teal-500 drop-shadow-[0_0_25px_rgba(20,184,166,0.6)] animate-bounce" style={{ animationDuration: '3s' }} />
                         </div>
                     </div>
 
