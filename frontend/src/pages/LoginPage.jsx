@@ -85,6 +85,7 @@ const LoginPage = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
 
+
         <div className="mb-3">
           <label className="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1.5">
             Password
