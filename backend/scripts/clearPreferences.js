@@ -1,15 +1,7 @@
 import dotenv from "dotenv";
-import path from "path";
-import { fileURLToPath } from "url";
 
-// 1. Setup paths
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const envPath = path.resolve(__dirname, "../../backend/.env");
-
-// 2. Load environment variables IMMEDIATELY
-console.log("Loading .env from:", envPath);
-dotenv.config({ path: envPath });
+// Load environment variables — safe because npm run always sets CWD to backend/
+dotenv.config();
 
 // 3. Define the main logic in an async function using dynamic imports
 async function clearPreferences() {
