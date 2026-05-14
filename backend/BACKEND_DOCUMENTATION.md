@@ -6,12 +6,14 @@ The AI Mentor backend is a Node.js and Express.js REST API responsible for authe
 
 The backend acts as the central communication layer between:
 
-* Frontend applications
-* PostgreSQL database
-* Python AI microservice
-* Cloudinary media storage
-* Email services
-* Authentication providers
+<ul>
+  <li><span style="color:#4F46E5;">Frontend applications</span></li>
+  <li><span style="color:#16A34A;">PostgreSQL database</span></li>
+  <li><span style="color:#DC2626;">Python AI microservice</span></li>
+  <li><span style="color:#0891B2;">Cloudinary media storage</span></li>
+  <li><span style="color:#CA8A04;">Email services</span></li>
+  <li><span style="color:#7C3AED;">Authentication providers</span></li>
+</ul>
 
 The project follows a modular architecture where routes handle API endpoints, controllers contain business logic, models manage database entities, and middleware handles authentication and validation.
 
