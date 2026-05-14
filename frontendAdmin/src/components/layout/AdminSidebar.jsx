@@ -12,6 +12,7 @@ import {
   X,
 } from "lucide-react";
 import { NAV_ITEMS } from "../../constants/adminNavigation";
+import { useNavigate } from "react-router-dom";
 
 const ICONS = {
   dashboard: LayoutDashboard,
@@ -136,7 +137,10 @@ function AdminSidebar({
                   <div className="text-[9px] text-muted font-bold opacity-60 uppercase tracking-widest mt-0.5">{roleLabel}</div>
                 </div>
               )}
-              {!collapsed && <Settings className="w-4 h-4 text-muted" />}
+              {!collapsed && <button  onClick={() => {
+                        navigate("/settings");
+                        onPageChange("settings");
+                      }}><Settings className="w-4 h-4 text-muted"/></button> }
             </div>
           </div>
         </div>
