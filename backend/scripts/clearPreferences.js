@@ -6,7 +6,7 @@ dotenv.config();
 // 3. Define the main logic in an async function using dynamic imports
 async function clearPreferences() {
   try {
-    console.log("Environment loaded. DB_USER:", process.env.DB_USER);
+    console.log("Environment loaded.");
 
     // Use dynamic imports to ensure they happen AFTER dotenv.config()
     const { default: Preference } = await import("../models/Preference.js");
