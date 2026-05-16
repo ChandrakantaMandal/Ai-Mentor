@@ -10,6 +10,7 @@
   },
   "type": "commonjs",
   "dependencies": {
+    "zod": "^4.4.3"
     "razorpay": "^2.9.6"
   }
 }
